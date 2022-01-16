@@ -5,6 +5,7 @@ A web application that scrapes the top 250 imdb movie list and randomly selects 
 ### Run backend
 - Create python virtual environment `$ python3 -m venv env`
 - Activate the environment `$ source env/bin/activate`
+- Install required dependencies `$ pip3 install -r requirements.txt`
 - Run api `$ python3 main.py`
 
 ### Run frontend
