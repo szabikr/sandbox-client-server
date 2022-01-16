@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react'
+import { fetchMovieSuggestion } from './services/api'
 
 export default function MovieSuggestion() {
   const [movie, setMovie] = useState(null)
+  const [error, setError] = useState(null)
+  
+  useEffect(() => {
+    async function doAsyncEffect() {
+      const result = await fetchMovieSuggestion()
+      if (result.hasError) {
+        setError(result.errorMsg)
+        return
+      }
 
-  const fetchMovieSuggestion = async () => {
-    try {
-      const response = await fetch('http://0.0.0.0:8000/movie-suggestion')
-      const data = await response.json()
+      const { data } = result
       const actorsList = data.actors_list
       const dirIndex = actorsList.search('(dir.)')
       setMovie({
@@ -17,18 +24,16 @@ export default function MovieSuggestion() {
         year: data.year.slice(1, data.year.length - 1),
         rating: Number.parseFloat(data.rating).toFixed(2),
       })
-    } catch (error) {
-      console.log('error is', error)
     }
-  }
-
-  useEffect(() => {
-    fetchMovieSuggestion()
+    doAsyncEffect()
   }, [])
 
   return (
     <>
       <h1>Movie Suggestion For you</h1>
+      {error && (
+        <p>Error: {error}</p>
+      )}
       {movie && (
         <>
           <p>title: {movie.title}</p>
