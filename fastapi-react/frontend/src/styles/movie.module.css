@@ -1,0 +1,52 @@
+.card {
+  max-width: 880px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Makes the image and the content to be
+   nicely aligned */
+.card > * {
+  float: left;
+}
+
+.poster {
+  max-width: 300px;
+}
+
+
+.content {
+  padding: 44px;
+  width: 492px;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  color: #222222;
+  margin-bottom: 36px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.year {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.cast {
+  margin-bottom: 20px;
+  color: #666666;
+}
+
+.link {
+  text-align: right;
+}

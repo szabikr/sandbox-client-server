@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import styles from './styles/movie-suggestion.module.css'
+
+import Error from './error'
+import Movie from './movie'
 import { fetchMovieSuggestion } from './services/api'
 
 export default function MovieSuggestion() {
@@ -30,20 +34,9 @@ export default function MovieSuggestion() {
 
   return (
     <>
-      <h1>Movie Suggestion For you</h1>
-      {error && (
-        <p>Error: {error}</p>
-      )}
-      {movie && (
-        <>
-          <p>title: {movie.title}</p>
-          <p>director: {movie.director}</p>
-          <p>topCast: {movie.topCast}</p>
-          <p><a href={movie.link}>{movie.link}</a></p>
-          <p>year: {movie.year}</p>
-          <p>rating: {movie.rating}</p>
-        </>
-      )}
+      <h1 className={styles.header}>Movie Suggestion For you</h1>
+      <Error error={error} />
+      <Movie movie={movie} />
     </>
   )
 }
